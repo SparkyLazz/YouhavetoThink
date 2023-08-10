@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Key
   - Interactable
+  - Puzzle
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - Player
   - FakeReflection
   - RealReflection
-  - 
+  - Interactables
   - 
   - 
   - 

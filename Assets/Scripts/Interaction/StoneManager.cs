@@ -21,14 +21,19 @@ public class StoneManager : MonoBehaviour
         inOder[2] = stones[1]; // Object 2 (index 1) in the correct order
         inOder[3] = stones[3]; // Object 4 (index 3) in the correct order
     }
-    private void OnTriggerStay2D(Collider2D collision)
+
+    void Update()
     {
+
+        var currentStone = GetCurrentStone();
+        if(currentStone == null) return;
+
         if (currenIndex < inOder.Length && Input.GetKeyDown(KeyCode.E))
         {
             currenIndex++;
-            if (CheckStone(collision.gameObject))
+            if (CheckStone(currentStone))
             {
-                inOrder.Add(collision.gameObject);
+                inOrder.Add(currentStone);
                 if (currenIndex == 4 && !IsGuessCorrect())
                 {
                     ResetPuzzle();
@@ -40,7 +45,44 @@ public class StoneManager : MonoBehaviour
         {
             animator.SetTrigger("Play");
         }
+
     }
+
+    GameObject GetCurrentStone()
+    {
+        var playerCollider = GetComponentInChildren<BoxCollider2D>();
+        foreach(GameObject g in stones)
+        {
+            //check for collider intersection of player with a stone
+            if(g.GetComponent<BoxCollider2D>().bounds.Intersects(playerCollider.bounds))
+            {
+                return g;
+            }
+        }
+        return null; //there is no stone intersecting with the player
+    }
+
+    // private void OnTriggerStay2D(Collider2D collision)
+    // {
+    //     if (currenIndex < inOder.Length && Input.GetKeyDown(KeyCode.E))
+    //     {
+    //         currenIndex++;
+    //         if (CheckStone(collision.gameObject))
+    //         {
+    //             inOrder.Add(collision.gameObject);
+    //             if (currenIndex == 4 && !IsGuessCorrect())
+    //             {
+    //                 ResetPuzzle();
+    //                 StartCoroutine(ColorAnimation());
+    //             }
+    //         }       
+    //     }
+    //     if (currenIndex == 4 && IsGuessCorrect())
+    //     {
+    //         animator.SetTrigger("Play");
+    //     }
+    // }
+
     private bool IsGuessCorrect()
     {
         for (int i = 0; i < inOrder.Count; i++)
