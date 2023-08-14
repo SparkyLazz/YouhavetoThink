@@ -11,11 +11,15 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Ground Settings")]
     public LayerMask groundLayer;
-    public Transform groundTransform;
+    public Transform groundCheckTransform;
+    public Vector2 groundCheckBoxSize;
+
 
     //Private Variables
     private float horizontal;
     private bool isFacingRight;
+    private bool jumpPressed;
+    private bool isGrounded;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,26 +27,38 @@ public class PlayerMovement : MonoBehaviour
     }
     // Update is called once per frame
     void Update()
+    {   
+        horizontal = Input.GetAxisRaw("Horizontal");
+        jumpPressed = Input.GetButtonDown("Jump");
+        Flip();
+        CheckGround();
+        verticalMove();
+    }
+    private void FixedUpdate()
     {
         horizontalMove();
-        verticalMove();
-        Flip();
     }
     void horizontalMove()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(horizontal * Speed, rb.velocity.y);
+    }
+    void CheckGround()
+    {
+        isGrounded = Physics2D.BoxCast(
+            groundCheckTransform.position,
+            groundCheckBoxSize,
+            0f,
+            Vector2.down,
+            0.1f, // Adjust this to your desired ground detection distance
+            groundLayer
+        );
     }
     void verticalMove()
     {
-        if(Input.GetButtonDown("Jump") && isGrounded())
+        if (isGrounded && jumpPressed)
         {
             rb.velocity = new Vector2(rb.velocity.x, Jump);
         }
-    }
-    bool isGrounded()
-    {
-        return Physics2D.OverlapCircle(groundTransform.position, 0.1f, groundLayer);
     }
     void Flip()
     {

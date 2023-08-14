@@ -62,27 +62,6 @@ public class StoneManager : MonoBehaviour
         return null; //there is no stone intersecting with the player
     }
 
-    // private void OnTriggerStay2D(Collider2D collision)
-    // {
-    //     if (currenIndex < inOder.Length && Input.GetKeyDown(KeyCode.E))
-    //     {
-    //         currenIndex++;
-    //         if (CheckStone(collision.gameObject))
-    //         {
-    //             inOrder.Add(collision.gameObject);
-    //             if (currenIndex == 4 && !IsGuessCorrect())
-    //             {
-    //                 ResetPuzzle();
-    //                 StartCoroutine(ColorAnimation());
-    //             }
-    //         }       
-    //     }
-    //     if (currenIndex == 4 && IsGuessCorrect())
-    //     {
-    //         animator.SetTrigger("Play");
-    //     }
-    // }
-
     private bool IsGuessCorrect()
     {
         for (int i = 0; i < inOrder.Count; i++)

@@ -7,6 +7,8 @@ TagManager:
   - Key
   - Interactable
   - Puzzle
+  - Endgame
+  - Object
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - FakeReflection
   - RealReflection
   - Interactables
-  - 
+  - Wall
   - 
   - 
   - 
