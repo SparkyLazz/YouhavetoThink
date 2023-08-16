@@ -57,6 +57,9 @@ public class Dialouge : MonoBehaviour
             case "Level 5":
                 specificArray = dialougeData.Dialouge_level5;
                 break;
+            case "Level 6":
+                specificArray = dialougeData.Dialouge_level6;
+                break;
         }
     }
 

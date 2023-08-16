@@ -67,7 +67,11 @@ public class PlayerMovement : MonoBehaviour
             isFacingRight = !isFacingRight;
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
+            Vector3 currentPosition = transform.position;
+            float offset = localScale.x > 0 ? 0.5f : -0.5f;
+            Vector3 newPosition = currentPosition + new Vector3(offset, 0f, 0f);
             transform.localScale = localScale;
+            transform.position = newPosition;
         }
     }
 }

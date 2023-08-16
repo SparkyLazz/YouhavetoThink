@@ -48,5 +48,13 @@ public class DialougeData
         "a place illuminated by the light of freedom as he pursued it",
         "And he was again excited to explore again"
     };
+    public string[] Dialouge_level6 =
+    {
+        "It seems that this room has a complicated mechanism",
+        "The room is very spacious",
+        "\"I don't know what's going to happen\"",
+        "\"It seems that it will be as difficult as the room of the room just now\"",
+        "\"i want go home\"",
+    };
 
 }
