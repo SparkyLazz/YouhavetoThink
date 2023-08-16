@@ -9,7 +9,6 @@ TagManager:
   - Puzzle
   - Endgame
   - Object
-  - GameOver
   layers:
   - Default
   - TransparentFX
