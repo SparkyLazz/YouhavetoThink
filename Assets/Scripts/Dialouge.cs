@@ -10,6 +10,7 @@ public class Dialouge : MonoBehaviour
     [Header("Animation Controller")]
     public TextMeshProUGUI text;
     public Animator transtiiton;
+    public PlayerMovement playermovement;
 
     //Get Data from database
     private DialougeData dialougeData;
@@ -33,8 +34,10 @@ public class Dialouge : MonoBehaviour
             text.text = specificArray[currenIndex];
             yield return new WaitForSeconds(delayBetweenSection);
             currenIndex++;
+            GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;
         }
         transtiiton.SetTrigger("End");
+        GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
         yield return null;
     }
     void DialougeManager()
@@ -60,6 +63,7 @@ public class Dialouge : MonoBehaviour
             case "Level 6":
                 specificArray = dialougeData.Dialouge_level6;
                 break;
+
         }
     }
 
