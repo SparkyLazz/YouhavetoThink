@@ -28,9 +28,5 @@ public class GUIManager : MonoBehaviour
         {
             Text.gameObject.SetActive(false);
         }
-        else
-        {
-            return;
-        }
     }
 }
