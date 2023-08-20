@@ -6,7 +6,9 @@ using UnityEngine.Audio;
 public class AudioManager : MonoBehaviour
 {
     public AudioSource[] musicTracks; // Array of your music Audio Sources
+    public AudioClip[] audioClip;
     private int currentTrackIndex = 0; // Index of the currently playing track
+    private bool Switch;
 
     private void Start()
     {
@@ -22,14 +24,17 @@ public class AudioManager : MonoBehaviour
 
     private IEnumerator WaitForTrackEnd()
     {
-        while (musicTracks[currentTrackIndex].isPlaying)
+        while (musicTracks[currentTrackIndex].time <= audioClip[currentTrackIndex].length)
         {
+            Switch = false;
             yield return null;
         }
-
-        // The current track has finished playing, switch to the next track
-        yield return new WaitForSeconds(5f);
-        SwitchToNextTrack();
+        Switch = true;
+        if (Switch)
+        {
+            yield return new WaitForSeconds(5);
+            SwitchToNextTrack();
+        }
     }
 
     private void SwitchToNextTrack()
