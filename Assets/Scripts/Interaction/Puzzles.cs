@@ -8,11 +8,26 @@ public class Puzzles : MonoBehaviour
     [Header("Puzzle Settings")]
     public GameObject[] puzzle;
     public GameObject[] buttons;
+    public Animator animator;
     public float SmoothTime;
     private bool isLoad;
+    private int topPlatformRotated;
+    private int rightPlatformRotated;
     // Update is called once per frame
     void Update()
-    {
+    {       
+        if (isLoad == false)
+        {
+            if (isDone())
+            {
+                foreach (var button in buttons)
+                {
+                    BoxCollider2D collider = button.GetComponent<BoxCollider2D>();
+                    collider.enabled = false;
+                }
+                animator.SetTrigger("End");
+            }
+        }
         var currenButton = buttonPuzzle();
         if (currenButton == null) return;
 
@@ -74,5 +89,46 @@ public class Puzzles : MonoBehaviour
         collider.enabled = true;
         isLoad = false;
         yield return null;
+    }
+    bool isDone()
+    {
+        foreach (GameObject platform in puzzle)
+        {
+            float zRotation = platform.transform.rotation.eulerAngles.z;
+            // Normalize platform name to remove spaces and ensure lowercase
+            string normalizedPlatformName = platform.name.ToLower().Replace(" ", "");                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+            if (normalizedPlatformName == "top&bottom")
+            {
+                if (Mathf.Approximately(zRotation % 180, 0) || Mathf.Approximately(zRotation % 180, 180))
+                {
+                    if(topPlatformRotated < 6)
+                    {
+                        topPlatformRotated++;
+                    }
+                }
+                else
+                {
+                    topPlatformRotated = 0;
+                }
+            }
+
+            if (normalizedPlatformName == "left&right")
+            {
+                if (Mathf.Approximately(zRotation % 180, 90) || Mathf.Approximately(zRotation % 180, -90))
+                {
+                    if (rightPlatformRotated < 6)
+                    {
+                        rightPlatformRotated++;
+                    }
+                }
+                else
+                {
+                    rightPlatformRotated = 0;
+                }
+            }
+        }
+
+        // Return true only if all required platforms are in correct rotations
+        return topPlatformRotated == 6 && rightPlatformRotated == 6;
     }
 }

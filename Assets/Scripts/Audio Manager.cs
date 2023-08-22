@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,14 +22,13 @@ public class AudioManager : MonoBehaviour
         musicTracks[currentTrackIndex].Play();
         StartCoroutine(WaitForTrackEnd());
     }
-
     private IEnumerator WaitForTrackEnd()
     {
-        while (musicTracks[currentTrackIndex].time <= audioClip[currentTrackIndex].length)
+        while (musicTracks[currentTrackIndex].time < audioClip[currentTrackIndex].length)
         {
             Switch = false;
             yield return null;
-        }
+        }      
         Switch = true;
         if (Switch)
         {
