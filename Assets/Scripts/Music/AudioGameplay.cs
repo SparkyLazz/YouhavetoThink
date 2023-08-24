@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class AudioManager : MonoBehaviour
+public class AudioGameplay : MonoBehaviour
 {
     public AudioSource[] musicTracks; // Array of your music Audio Sources
     public AudioClip[] audioClip;

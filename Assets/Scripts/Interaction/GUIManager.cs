@@ -6,10 +6,6 @@ using TMPro;
 public class GUIManager : MonoBehaviour
 {
     public TextMeshProUGUI Text;
-    private void Start()
-    {
-        Text.gameObject.SetActive(false);
-    }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Interactable"))
