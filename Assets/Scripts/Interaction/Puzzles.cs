@@ -13,7 +13,12 @@ public class Puzzles : MonoBehaviour
     private bool isLoad;
     private int topPlatformRotated;
     private int rightPlatformRotated;
+    private bool teleported = false;
     // Update is called once per frame
+    private void Start()
+    {
+
+    }
     void Update()
     {       
         if (isLoad == false)
@@ -26,6 +31,11 @@ public class Puzzles : MonoBehaviour
                     collider.enabled = false;
                 }
                 animator.SetTrigger("End");
+                if(!teleported)
+                {
+                    StartCoroutine(teleportPlayer());
+                    teleported = true;
+                }
             }
         }
         var currenButton = buttonPuzzle();
@@ -70,7 +80,7 @@ public class Puzzles : MonoBehaviour
         {
             collider.enabled = false;
             isLoad = true;
-            
+
             Transform platformTransform = puzzle[index].transform;
             float startZRotation = platformTransform.rotation.eulerAngles.z;
             float targetZRotation = (startZRotation + 30f) % 360f;
@@ -88,6 +98,17 @@ public class Puzzles : MonoBehaviour
         }
         collider.enabled = true;
         isLoad = false;
+        yield return null;
+    }
+
+    IEnumerator teleportPlayer()
+    {
+        yield return new WaitForSeconds(9);
+        animator.SetTrigger("Teleported");
+        yield return new WaitForSeconds(0.5f);
+        gameObject.transform.position = new Vector3(-9.38f, 21.95f, 0.06822363f);
+        Camera.main.transform.position = new Vector2(-0.11f, 26.56f);
+        Camera.main.orthographicSize = 6.11f;
         yield return null;
     }
     bool isDone()
@@ -127,7 +148,6 @@ public class Puzzles : MonoBehaviour
                 }
             }
         }
-
         // Return true only if all required platforms are in correct rotations
         return topPlatformRotated == 6 && rightPlatformRotated == 6;
     }

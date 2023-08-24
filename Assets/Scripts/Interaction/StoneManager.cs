@@ -24,20 +24,19 @@ public class StoneManager : MonoBehaviour
 
     void Update()
     {
-
         var currentStone = GetCurrentStone();
         if(currentStone == null) return;
 
         if (currenIndex < inOder.Length && Input.GetKeyDown(KeyCode.E))
-        {
-            currenIndex++;
+        {           
             if (CheckStone(currentStone))
             {
+                currenIndex++;
                 inOrder.Add(currentStone);
                 if (currenIndex == 4 && !IsGuessCorrect())
                 {
-                    ResetPuzzle();
                     StartCoroutine(ColorAnimation());
+                    ResetPuzzle();
                 }
             }       
         }
