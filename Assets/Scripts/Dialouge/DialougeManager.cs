@@ -21,7 +21,7 @@ public class DialougeManager : MonoBehaviour
         }
         DisplayNextSentece();
     }
-    void DisplayNextSentece()
+    public void DisplayNextSentece()
     {
         if(sentences.Count == 0)
         {
