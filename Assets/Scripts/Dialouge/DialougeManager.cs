@@ -7,17 +7,32 @@ public class DialougeManager : MonoBehaviour
 {
     private Queue<string> sentences;
     public TextMeshProUGUI text;
+    public GameObject panelDialouge;
+    Key key;
     // Start is called before the first frame update
     void Start()
     {
         sentences = new Queue<string>();
+        key = FindFirstObjectByType<Key>();
+        
     }
     public void StartDialouge(DialougeSentenes dialouge)
-    {
+    { 
         sentences.Clear();
-        foreach (var sent in dialouge.sentence)
+        panelDialouge.SetActive(true);
+        if(!key.isGetKey)
         {
-            sentences.Enqueue(sent);
+            foreach (var sent in dialouge.sentence)
+            {
+                sentences.Enqueue(sent);
+            }
+        }
+        else
+        {
+            foreach (var sent in dialouge.afterCondition)
+            {
+                sentences.Enqueue(sent);
+            }
         }
         DisplayNextSentece();
     }
@@ -43,6 +58,6 @@ public class DialougeManager : MonoBehaviour
     }
     void EndDialouge()
     {
-        Debug.Log("End");
+        panelDialouge.SetActive(false);
     }
 }

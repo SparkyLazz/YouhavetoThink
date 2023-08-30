@@ -12,7 +12,7 @@ public class Key : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E) && isGetKey == false)
             {
                 isGetKey = true;
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
     }

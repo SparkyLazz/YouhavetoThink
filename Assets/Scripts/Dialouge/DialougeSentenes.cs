@@ -9,4 +9,6 @@ public class DialougeSentenes
 
     [TextArea(3, 10)]
     public string[] sentence;
+    [TextArea(3, 10)]
+    public string[] afterCondition;
 }
