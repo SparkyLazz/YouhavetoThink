@@ -56,5 +56,12 @@ public class DialougeData
         "\"It seems that it will be as difficult as the room of the room just now\"",
         "\"i want go home\"",
     };
+    public string[] Dialouge_level7 =
+    {
+        "Toni no longer knows what to do next",
+        "He began to surrender and didn't care about his life anymore",
+        "Suddenly he saw something that made him excited again",
+        "\"It seems that my life I have hope\""
+    };
 
 }
