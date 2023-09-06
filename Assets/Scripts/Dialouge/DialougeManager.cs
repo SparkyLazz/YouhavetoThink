@@ -12,22 +12,21 @@ public class DialougeManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sentences = new Queue<string>();
-        key = FindFirstObjectByType<Key>();
-        
+        sentences = new Queue<string>(); 
     }
     public void StartDialouge(DialougeSentenes dialouge)
     { 
         sentences.Clear();
         panelDialouge.SetActive(true);
-        if(!key.isGetKey)
+        key = FindFirstObjectByType<Key>();
+        if (key == null)
         {
             foreach (var sent in dialouge.sentence)
             {
                 sentences.Enqueue(sent);
             }
         }
-        else
+        else if (key.isGetKey == true)
         {
             foreach (var sent in dialouge.afterCondition)
             {
