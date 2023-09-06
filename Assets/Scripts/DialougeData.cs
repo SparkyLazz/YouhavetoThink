@@ -63,5 +63,17 @@ public class DialougeData
         "Suddenly he saw something that made him excited again",
         "\"It seems that my life I have hope\""
     };
+    public string[] Dialouge_level8 =
+    {
+        "\"You really did it by yourself\"",
+        "\"It's all because of my survival intention\"",
+        "\"How about we go to my base\"",
+        "\"Why, isn't it our goal to get out of this room?\"",
+        "\"I see your soul is in turmoil because of depression or mental decay\"",
+        "\"Why did you invite me to go there?\"",
+        "\"Because my friend died of depression. So I don't want to see that incident a second time\"",
+        "\"sorry for reminding you of that\"",
+        "\"No problem, let's go\""
+    };
 
 }
