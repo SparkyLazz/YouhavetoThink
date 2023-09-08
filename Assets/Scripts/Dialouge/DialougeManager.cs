@@ -19,7 +19,7 @@ public class DialougeManager : MonoBehaviour
         sentences.Clear();
         panelDialouge.SetActive(true);
         key = FindFirstObjectByType<Key>();
-        if (key == null)
+        if (key == null || key.isGetKey == false)
         {
             foreach (var sent in dialouge.sentence)
             {

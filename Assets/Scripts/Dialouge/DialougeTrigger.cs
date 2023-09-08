@@ -11,7 +11,7 @@ public class DialougeTrigger : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (gameObject.CompareTag("Interactable"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             if (Input.GetKeyDown(KeyCode.E))
             {

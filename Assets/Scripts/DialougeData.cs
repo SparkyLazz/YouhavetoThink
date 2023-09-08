@@ -75,5 +75,9 @@ public class DialougeData
         "\"sorry for reminding you of that\"",
         "\"No problem, let's go\""
     };
+    public string[] Dialouge_credit =
+    {
+
+    };
 
 }
