@@ -77,7 +77,12 @@ public class DialougeData
     };
     public string[] Dialouge_credit =
     {
-
+        "after they went to the next room",
+        "suddenly the some kind sort of energy called \"enourmos dark energy\" chase Tony and suddenly Tony fell hard to breath",
+        "alex rushed to help tony but at the same moment the energy come out of knowhere and tried to take alex into the Valley of lost soul",
+        "The room is getting darker and the air is harder to breathe",
+        "Fate makes Tony and Alex forced to explore in a scarier place",
+        "To be continue..."
     };
 
 }

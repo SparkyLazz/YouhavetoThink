@@ -69,6 +69,9 @@ public class Dialouge : MonoBehaviour
             case "Level 8":
                 specificArray = dialougeData.Dialouge_level8;
                 break;
+            case "Level 9":
+                specificArray = dialougeData.Dialouge_credit;
+                break;
         }
     }
 
